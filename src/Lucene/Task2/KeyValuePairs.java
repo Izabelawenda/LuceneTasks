@@ -1,3 +1,5 @@
+package Lucene.Task2;
+
 public class KeyValuePairs {
     private String value;
     private String key;
