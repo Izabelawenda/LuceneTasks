@@ -82,4 +82,12 @@ public class CustomAnalyzerTest {
 
         assertEquals("text-example-concatenate-\"connect\"-tokens-delimiter,-default-chosen-one.\n", byteOutputStream.toString());
     }
+
+    /*
+    Let us add a test case where we will check our custom analyzer used with Lucene internals
+
+    i.e. Create an Indexer with your custom analyzer set up
+         Add a few documents to be indexed that will be analyzed f.e. with value "text is an example"
+         In search part, make sure that this document is matched exactly (with TermQuery) for phrase "text example"
+     */
 }

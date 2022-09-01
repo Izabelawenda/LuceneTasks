@@ -59,6 +59,8 @@ public class ProximitySearch {
         for(String proximityQuery : listOfProximityQueries){
             Query query = parser.parse(proximityQuery);
             ScoreDoc[] hits = isearcher.search(query, 10).scoreDocs;
+
+            // as in previous task - let us create a Junit Test that will check that it works as expected rather than checking with eyes
             System.out.println(proximityQuery + " found in :: " + hits.length + " files");
             System.out.println(Arrays.toString(Arrays.stream(hits).toArray()));
         }
@@ -81,6 +83,14 @@ public class ProximitySearch {
     //
     //
 
+    /*
+     * It is better if `createProximitySearchQueries` will return a list of listOfProximityQueries by it's own.
+     *
+     *
+     * public static List<String> createProximitySearchQueries(List<ProximityQuery> queries) {...}
+     *
+     * P.S. If we created a Searcher and Indexer Component for Task 1, we can simply reuse it and add additional search methods :)
+     */
     public static void createProximitySearchQueries(List<KeyValuePairs> listOfQueries, List<String> listOfProximityQueries){
 
         for (KeyValuePairs listOfQuery : listOfQueries) {
@@ -92,6 +102,15 @@ public class ProximitySearch {
 
     public static void createKeyValuePairs(List<KeyValuePairs> listOfDocs, List<KeyValuePairs> listOfQueries){
 
+        /*
+         * todo: for readability, let us distinguish Document and Query
+         * currently for both scenarios KeyValuePairs is used - and it works good - but readability is not ideal.
+         *
+         * Let us create a separate class for Document :    class Document {String id, String content}
+         * And a separate class for Query: class ProximityQuery(String phrase, int distance)
+         *
+         * In this case, it would be easier to follow it this list is a query or document.
+         */
         KeyValuePairs file1 = new KeyValuePairs("file1", "to be or not to be that is the question");
         KeyValuePairs file2 = new KeyValuePairs("file2", "make a long story short");
         KeyValuePairs file3 = new KeyValuePairs("file3", "see eye to eye");
